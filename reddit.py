@@ -11,8 +11,9 @@ def background_image(reddit):
 	# img = Image.open
 	reddit_bucket = []
 	subreddit_name = input('Enter the name of the subreddit you want to download from : ')
-
-	if subreddit_name == 'wallpapers':
+	if subreddit_name == '':
+		subreddit_name='EarthPorn'
+	elif subreddit_name == 'wallpapers':
 		print('Imma stop you right there and ask you to think of some page that is not as generic as this one. Also this script does not work here')
 
 
@@ -27,13 +28,13 @@ def background_image(reddit):
 		if "." not in name_of_file:
 			name_of_file += '.jpg'
 	
-
+	# print(name_of_file)
 	r = requests.get(url)
 	# print(url)
 
-	firstpos=url.rfind("/")
+	# firstpos=url.rfind("/")
 	
-	lastpos=len(url)
+	# lastpos=len(url)
 
 	# print(url[firstpos+1:lastpos])
 
@@ -44,7 +45,8 @@ def background_image(reddit):
 	
 
 	# Looks for the absolute filepath and changes the desktop wallpaper
-	ctypes.windll.user32.SystemParametersInfoW(20, 0, f"C:\\Users\\shaurya\\Reddit\\{url[firstpos+1:lastpos]}" , 0)	
+	ctypes.windll.user32.SystemParametersInfoW(20, 0, f"C:\\Users\\shaurya\\Reddit\\{name_of_file}" , 0)	
+	print(reddit_bucket)
 	
 
 
