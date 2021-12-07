@@ -7,5 +7,6 @@ Steps to run this script on :
 6. Add the three variables in your ```credentials.py``` file as follows 
  ```my_client_secret  = 'asdsacsdacsdcasd'
     my_client_id = 'asdcacdas'
-    my_user_agent = 'demo' ```
-5. Run the program ```python reddit.py```. Note : You can also specify the download location using ``` python reddit.py --dl "{Specify Path Here}"```
+    my_user_agent = 'demo'
+ ```   
+7. Run the program ```python reddit.py```. Note : You can also specify the download location using ``` python reddit.py --dl "{Specify Path Here}"```
