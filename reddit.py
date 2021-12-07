@@ -42,12 +42,13 @@ class Reddit:
 				name_of_file = name_of_file[-1]
 				if "." not in name_of_file:
 					name_of_file += '.jpg'
-			r = requests.get(url)
+			r = requests.get(url,timeout=5)
 			if not base_directory:
 				base_directory = base_dir
 			dir = "Wallpapers"
 			path = os.path.join(base_directory,dir)
-			os.mkdir(path)
+			if not os.path.exists(path):
+				os.mkdir(path)
 			print(f"Wallpaper saved in {path}")
 			with open(f"{path}\\{name_of_file}","wb") as f:
 					f.write(r.content)
@@ -57,7 +58,7 @@ class Reddit:
 		except Exception as e:
 			err_count+=1
 			logger.error(e) 
-			
+
 if __name__ == '__main__':
 	parser = ArgumentParser()
 	parser.add_argument('-dl', '--dl',
