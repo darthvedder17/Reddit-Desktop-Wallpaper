@@ -1,21 +1,15 @@
 import praw
 import requests
 from credentials import *
-import json
-from PIL import Image
-import random
 import ctypes
-import urllib
 import logging
-import traceback
-import os,inspect,sys
+import os,sys
 from argparse import ArgumentParser
 import time
 base_dir = os.getcwd()
 sys.path.append(base_dir)
 message = []
 err_count = 0
-#now we will Create and configure logger
 log_dir = "logs"
 log_file = "std.log"
 log_file_path = f'{base_dir}//{log_dir}'
@@ -25,19 +19,14 @@ if not os.path.exists(log_file_path):
 logging.basicConfig(filename=f'{log_file_path}//{log_file}', 
 					format='%(asctime)s %(message)s', 
 					filemode='w') 
-
-#Let us Create an object 
 logger=logging.getLogger() 
-#Now we are going to Set the threshold of logger to DEBUG 
 logger.setLevel(logging.DEBUG) 
 class Reddit:
 	def background_image(self,reddit,subreddit_name,base_directory):
 		global err_count
 		global base_dir
 		try:
-		# img = Image.open
 			reddit_bucket = []
-			import pdb;pdb.set_trace()
 			if not subreddit_name:
 				subreddit_name='EarthPorn'
 			elif subreddit_name == 'wallpapers':
@@ -69,14 +58,12 @@ class Reddit:
 			err_count+=1
 			logger.error(e) 
 			
-
 if __name__ == '__main__':
 	parser = ArgumentParser()
 	parser.add_argument('-dl', '--dl',
 						required=False,
 						type=str,
-						help='--type 0 : Check Payment Status for Drawdown Payments,\
-							--type 1 : Check Payment Status for Cashback Payments'
+						help='Specify the download location of the wallpapers you want to use'
 						)    
 	args = parser.parse_args()
 	script_start_time = time.time()
